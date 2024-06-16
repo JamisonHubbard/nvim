@@ -4,7 +4,6 @@ vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 
--- lazy package manager
 -- check if lazy.nvim already exists at the expected path
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 -- if not, install lazy.nvim
@@ -23,9 +22,19 @@ vim.opt.rtp:prepend(lazypath)
 -- so that we can pass this list to lazy.nvim below and it will manage them
 local plugins = {
     -- install the tokyonight colorscheme
-    { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {}, }
+    { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {}, },
+
+    -- install the telescope plugin
+    {
+        "nvim-telescope/telescope.nvim",
+        tag = "0.1.6",
+        -- install plenary.nvim as well, which is sort of a utility library that
+        -- telescope depends on
+        dependencies = { "nvim-lua/plenary.nvim" },
+    }
 }
--- unclear what opts are for
+
+-- unclear what opts are for, but they are also passed as an arg to lazy.nvim
 local opts = {}
 
 -- call the setup function for lazy.nvim
