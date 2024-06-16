@@ -21,46 +21,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- the plugins variable contains config for plugins we want to be installed
--- so that we can pass this list to lazy.nvim below and it will manage them
-local plugins = {
-    -- install the tokyonight colorscheme
-    { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {}, },
-
-    -- install the telescope plugin
-    {
-        "nvim-telescope/telescope.nvim",
-        tag = "0.1.6",
-        -- install plenary.nvim as well, which is sort of a utility library that
-        -- telescope depends on
-        dependencies = { "nvim-lua/plenary.nvim" },
-    },
-
-    -- install treesitter plugin
-    {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-    },
-
-    -- install neotree plugin
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        -- install these plugins as dependencies of neotree
-        dependencies = {
-            "nvim-lua/plenary.nvim", -- utility functions for neovim
-            "nvim-tree/nvim-web-devicons", -- supports nerd font icons
-            "MunifTanjim/nui.nvim", -- ui component library for neovim
-            "3rd/image.nvim", -- supports image previews in neovim
-        },
-    },
-}
-
--- unclear what opts are for, but they are also passed as an arg to lazy.nvim
-local opts = {}
-
 -- call the setup function for lazy.nvim
-require("lazy").setup(plugins, opts)
+-- by passing in "plugins", we are telling lazy.nvim to look for a special file under
+-- "lua/plugins.lua" to find a definition of our plugins
+require("lazy").setup("plugins")
 
 -- set keybinds for the telescope plugin
 -- here we are accessing the lua module within telescope called "builtin" and
