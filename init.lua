@@ -1,3 +1,6 @@
+-- leader key is set to space key
+vim.g.mapleader = " "
+
 -- tab space config
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=4")
