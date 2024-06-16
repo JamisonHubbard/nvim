@@ -3,10 +3,10 @@
 ### Plugin List
 - [Lazy](https://github.com/folke/lazy.nvim) Package Manager
 - [Lualine](https://github.com/nvim-lualine/lualine.nvim) Neovim Status Bar
-- [Neotree](https://github.com/nvim-neo-tree/neo-tree.nvim)
+- [Neotree](https://github.com/nvim-neo-tree/neo-tree.nvim) Filesystem Viewer
 - [Telescope](https://github.com/nvim-telescope/telescope.nvim) Fuzzy Finder Utility
 - [TokyoNight](https://github.com/folke/tokyonight.nvim) Color Scheme
-- [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter) AST Parser and Highlighter
 
 ### Dependency Plugins
 These plugins are installed not for their own sake, but as dependencies of the above
