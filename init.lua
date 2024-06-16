@@ -19,9 +19,19 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- create empty variables needed to start lazy.nvim
-local plugins = {}
+-- the plugins variable contains config for plugins we want to be installed
+-- so that we can pass this list to lazy.nvim below and it will manage them
+local plugins = {
+    -- install the tokyonight colorscheme
+    { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {}, }
+}
+-- unclear what opts are for
 local opts = {}
 
 -- call the setup function for lazy.nvim
 require("lazy").setup(plugins, opts)
+
+-- call the setup function for the tokyonight color scheme
+require("tokyonight").setup({ style = "storm" })
+-- then set it as the colorscheme
+vim.cmd.colorscheme "tokyonight"
