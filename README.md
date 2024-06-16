@@ -4,6 +4,7 @@
 - [Lazy](https://github.com/folke/lazy.nvim) Package Manager
 - [Telescope](https://github.com/nvim-telescope/telescope.nvim) Fuzzy Finder Utility
 - [TokyoNight](https://github.com/folke/tokyonight.nvim) Color Scheme
+- [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
 ---
 
@@ -27,3 +28,9 @@ there are plugins to install
 
 - Configured in `init.lua`
 
+### Treesitter
+**Summary:** Builds an AST used for syntax highlighting and formatting, as well as by other plugins
+
+- Configured in `init.lua`
+- See config for a list of parsers it has installed by default
+- Use `:TSInstall <lang>` to install a language parser at run-time 

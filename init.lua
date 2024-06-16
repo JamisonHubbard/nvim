@@ -34,7 +34,13 @@ local plugins = {
         -- install plenary.nvim as well, which is sort of a utility library that
         -- telescope depends on
         dependencies = { "nvim-lua/plenary.nvim" },
-    }
+    },
+
+    -- install treesitter plugin
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+    },
 }
 
 -- unclear what opts are for, but they are also passed as an arg to lazy.nvim
@@ -44,10 +50,54 @@ local opts = {}
 require("lazy").setup(plugins, opts)
 
 -- set keybinds for the telescope plugin
--- pull the lua module named "builtin" out from the telescope module
+-- here we are accessing the lua module within telescope called "builtin" and
+-- pointing vim at some of its exported functions when we do certain key commands
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files, {}) -- "find files"
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, {}) -- "find with grep"
+
+-- configure treesitter plugin
+-- here we are accessing the "configs" module in the treesitter plugin and calling
+-- its "setup" function
+require("nvim-treesitter.configs").setup({
+    -- the treesitter parsers to install
+    ensure_installed = {
+        "bash",
+        "c",
+        "cpp",
+        "css",
+        "csv",
+        "diff",
+        "dockerfile",
+        "go",
+        "html",
+        "java",
+        "javascript",
+        "jq",
+        "jsdoc",
+        "json",
+        "json5",
+        "lua",
+        "markdown",
+        "nix",
+        "python",
+        "regex",
+        "rust",
+        "scss",
+        "sql",
+        "tmux",
+        "toml",
+        "typescript",
+        "vim",
+        "vimdoc",
+        "xml",
+        "yaml",
+    },
+
+    -- turn on highlighting and indenting
+    highlight = { enable = true },
+    indent = { enable = true },
+})
 
 -- call the setup function for the tokyonight color scheme
 require("tokyonight").setup({ style = "storm" })
