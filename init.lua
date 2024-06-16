@@ -22,66 +22,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- call the setup function for lazy.nvim
--- by passing in "plugins", we are telling lazy.nvim to look for a special file under
--- "lua/plugins.lua" to find a definition of our plugins
+-- by passing in "plugins", we are telling lazy.nvim to look to the special "lua/" directory for
+-- plugin definitions. These definitions can be in "lua/plugins.lua", or can be located in any lua
+-- file found under the "lua/plugins/" folder
+-- see the "lua/plugins/tokyonight.lua" file as a commented example of setting up a plugin this way
 require("lazy").setup("plugins")
-
--- set keybinds for the telescope plugin
--- here we are accessing the lua module within telescope called "builtin" and
--- pointing vim at some of its exported functions when we do certain key commands
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", builtin.find_files, {}) -- "find files"
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, {}) -- "find with grep"
-
--- set keybinds for neotree plugin
--- here we set the keybind to the exact console command we would use
--- note: we explicitly place a carriage-return at the end of the command so it runs
-vim.keymap.set("n", "<leader>e", ":Neotree filesystem reveal left<CR>", {})
-
--- configure treesitter plugin
--- here we are accessing the "configs" module in the treesitter plugin and calling
--- its "setup" function
-require("nvim-treesitter.configs").setup({
-    -- the treesitter parsers to install
-    ensure_installed = {
-        "bash",
-        "c",
-        "cpp",
-        "css",
-        "csv",
-        "diff",
-        "dockerfile",
-        "go",
-        "html",
-        "java",
-        "javascript",
-        "jq",
-        "jsdoc",
-        "json",
-        "json5",
-        "lua",
-        "markdown",
-        "nix",
-        "python",
-        "regex",
-        "rust",
-        "scss",
-        "sql",
-        "tmux",
-        "toml",
-        "typescript",
-        "vim",
-        "vimdoc",
-        "xml",
-        "yaml",
-    },
-
-    -- turn on highlighting and indenting
-    highlight = { enable = true },
-    indent = { enable = true },
-})
-
--- call the setup function for the tokyonight color scheme
-require("tokyonight").setup({ style = "storm" })
--- then set it as the colorscheme
-vim.cmd.colorscheme "tokyonight"
