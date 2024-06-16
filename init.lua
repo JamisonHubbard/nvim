@@ -43,6 +43,12 @@ local opts = {}
 -- call the setup function for lazy.nvim
 require("lazy").setup(plugins, opts)
 
+-- set keybinds for the telescope plugin
+-- pull the lua module named "builtin" out from the telescope module
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>ff", builtin.find_files, {}) -- "find files"
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, {}) -- "find with grep"
+
 -- call the setup function for the tokyonight color scheme
 require("tokyonight").setup({ style = "storm" })
 -- then set it as the colorscheme
