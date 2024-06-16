@@ -41,6 +41,19 @@ local plugins = {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
     },
+
+    -- install neotree plugin
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        -- install these plugins as dependencies of neotree
+        dependencies = {
+            "nvim-lua/plenary.nvim", -- utility functions for neovim
+            "nvim-tree/nvim-web-devicons", -- supports nerd font icons
+            "MunifTanjim/nui.nvim", -- ui component library for neovim
+            "3rd/image.nvim", -- supports image previews in neovim
+        },
+    },
 }
 
 -- unclear what opts are for, but they are also passed as an arg to lazy.nvim
@@ -55,6 +68,11 @@ require("lazy").setup(plugins, opts)
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files, {}) -- "find files"
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, {}) -- "find with grep"
+
+-- set keybinds for neotree plugin
+-- here we set the keybind to the exact console command we would use
+-- note: we explicitly place a carriage-return at the end of the command so it runs
+vim.keymap.set("n", "<leader>e", ":Neotree filesystem reveal left<CR>", {})
 
 -- configure treesitter plugin
 -- here we are accessing the "configs" module in the treesitter plugin and calling
