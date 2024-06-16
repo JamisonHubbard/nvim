@@ -5,6 +5,8 @@
 - [Telescope](https://github.com/nvim-telescope/telescope.nvim) Fuzzy Finder Utility
 - [TokyoNight](https://github.com/folke/tokyonight.nvim) Color Scheme
 
+---
+
 ### Lazy Package Manager
 **Summary:** Lazy loads plugins for neovim
 
