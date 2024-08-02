@@ -1,5 +1,8 @@
 # Jamison's Neovim Config
 
+> If setting up a new Neovim config on NixOS, clone this repo to `~/.config/nvim`, removing
+anything that's been created there already by Home Manager, then rebuild the NixOS config.
+
 ### Plugin List
 - [Lazy](https://github.com/folke/lazy.nvim) Package Manager
 - [Lualine](https://github.com/nvim-lualine/lualine.nvim) Neovim Status Bar

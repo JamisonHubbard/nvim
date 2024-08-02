@@ -27,3 +27,13 @@ vim.opt.rtp:prepend(lazypath)
 -- file found under the "lua/plugins/" folder
 -- see the "lua/plugins/tokyonight.lua" file as a commented example of setting up a plugin this way
 require("lazy").setup("plugins")
+
+-- optionally import "parsers" if it's there
+function require_if(module)
+    local function try_require(module)
+        require(module)
+    end
+
+    result = pcall(try_require, module)
+end
+require_if("parsers")
